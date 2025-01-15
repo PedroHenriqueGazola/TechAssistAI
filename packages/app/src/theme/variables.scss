@@ -38,3 +38,13 @@
     --background: transparent;
   }
 }
+
+.tech-diagnose-modal {
+  --width: 100%;
+  --height: fit-content;
+  --min-height: 500px;
+  --border-radius: 12px 12px 0 0;
+  --background-color: #fff;
+  display: flex;
+  align-items: flex-end;
+}

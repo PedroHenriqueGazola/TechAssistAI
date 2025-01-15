@@ -30,36 +30,15 @@ services:
     image: cr.weaviate.io/semitechnologies/transformers-inference:sentence-transformers-multi-qa-MiniLM-L6-cos-v1
     environment:
       ENABLE_CUDA: '0'
-      NVIDIA_VISIBLE_DEVICES: 'all'
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities:
-                - 'gpu'
   sum-transformers:
     image: cr.weaviate.io/semitechnologies/sum-transformers:facebook-bart-large-cnn-1.0.0
     environment:
       ENABLE_CUDA: '0'
-      NVIDIA_VISIBLE_DEVICES: 'all'
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities:
-                - 'gpu'
   text-spellcheck:
     image: cr.weaviate.io/semitechnologies/text-spellcheck-model:pyspellchecker-en
   i2v-neural:
     image: cr.weaviate.io/semitechnologies/img2vec-pytorch:resnet50
     environment:
       ENABLE_CUDA: '0'
-      NVIDIA_VISIBLE_DEVICES: 'all'
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities:
-                - 'gpu'
 volumes:
   weaviate_data:

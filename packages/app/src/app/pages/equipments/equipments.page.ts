@@ -3,6 +3,7 @@ import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonicModule, NavController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { CardEquipmentComponent } from './components/card-equipment/card-equipment.component';
 import { Equipment } from './equipments.type';
 
@@ -34,7 +35,7 @@ export class EquipmentsPage {
   private async loadEquipments() {
     const response = await firstValueFrom(
       this.http.get<{ equipments: Equipment[] } | undefined>(
-        'http://192.168.15.14:8642/equipments'
+        environment.API_URL + '/equipments'
       )
     );
 

@@ -1,0 +1,61 @@
+ion-content {
+  ion-skeleton-text {
+    margin-bottom: 16px;
+    border-radius: 15px;
+    height: 150px;
+  }
+}
+
+:host {
+  max-height: 100vh !important;
+}
+
+.equipment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+  }
+}
+
+ion-button {
+  height: 48px;
+}
+
+.diagnose-modal {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  height: 100%;
+
+  .diagnosis-output {
+    margin-top: 24px;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    overflow: auto;
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+      white-space: pre-wrap;
+    }
+  }
+}

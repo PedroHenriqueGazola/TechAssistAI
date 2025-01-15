@@ -1,8 +1,5 @@
 import { Application, Response } from 'express';
-import Controller, {
-	Methods,
-	RouteConfig,
-} from '../../core/controller/controller';
+import Controller, { Methods, RouteConfig } from '../../core/controller/controller';
 import { AuthenticatedRequest } from '../../core/middleware/auth.type';
 import { TechAssistService } from './techAssist.service';
 
@@ -21,10 +18,7 @@ export default class TechAssistController extends Controller {
 		super(app);
 	}
 
-	public async diagnoseIssue(
-		req: AuthenticatedRequest,
-		res: Response,
-	): Promise<void> {
+	public async diagnoseIssue(req: AuthenticatedRequest, res: Response): Promise<void> {
 		const { description, equipmentId } = req.body;
 
 		if (!description || !equipmentId) {
@@ -36,12 +30,13 @@ export default class TechAssistController extends Controller {
 		try {
 			const techAssistService = new TechAssistService();
 
-			const solution = await techAssistService.diagnoseIssue({
-				description,
-				equipmentId,
-			});
-
-			res.status(200).json({ solution });
+			await techAssistService.diagnoseIssue(
+				{
+					description,
+					equipmentId,
+				},
+				res,
+			);
 		} catch (error) {
 			console.log(error);
 			res.status(500).json({ error });

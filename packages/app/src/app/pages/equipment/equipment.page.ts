@@ -8,7 +8,9 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IonicModule, NavController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular/standalone';
 import { firstValueFrom } from 'rxjs';
+import { DiagnoseModalComponent } from 'src/app/core/components/diagnose-modal/diagnose-modal.component';
 import { environment } from 'src/environments/environment.prod';
 import { Equipment } from '../equipments/equipments.type';
 
@@ -30,7 +32,8 @@ export class EquipmentPage {
     private readonly navController: NavController,
     private readonly http: HttpClient,
     private readonly route: ActivatedRoute,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private readonly modalCtrl: ModalController
   ) {
     this.equipmentForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -76,7 +79,18 @@ export class EquipmentPage {
     }
   }
 
-  public async openDiagnoseModal() {}
+  public async openDiagnoseModal() {
+    const modal = await this.modalCtrl.create({
+      component: DiagnoseModalComponent,
+      cssClass: 'tech-diagnose-modal',
+      componentProps: {
+        equipmentId: this.equipment()?.id,
+      },
+    });
+    modal.present();
+
+    await modal.onWillDismiss();
+  }
 
   private async loadEquipment(equipmentId: string) {
     const response = await firstValueFrom(

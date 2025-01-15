@@ -114,9 +114,9 @@ async function createEquipments(db: WeaviateClient, accountIds: string[]): Promi
 		{
 			id: '010ff9e3-4c4d-49cb-93e9-de5a1602b373',
 			properties: {
-				name: 'Equipment 1',
-				description: 'Description 1',
-				serialNumber: '123456',
+				name: 'Ar condicionado Daikin',
+				description: 'Ar condicionado split inverter 12000 BTUs',
+				serialNumber: '123456789',
 			},
 			references: {
 				accountId: accountIds[0],
